@@ -59,7 +59,22 @@ export class UserService {
   }
 
   async findAll() {
+    return await this.userRepository
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.cars', 'car')
+      .getMany()
+  }
+
+  async findAllWithoutCars() {
     return await this.userRepository.createQueryBuilder('user').getMany()
+  }
+
+  async findCarsByEmail(email: string) {
+    return await this.userRepository
+      .createQueryBuilder('user')
+      .where('user.email = :email', { email })
+      .leftJoinAndSelect('user.cars', 'car')
+      .getMany()
   }
 
   async findOneById(id: number): Promise<User | null> {

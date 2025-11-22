@@ -45,6 +45,21 @@ export class UserController {
     } else return users
   }
 
+  @Get('/without')
+  @HttpCode(200)
+  @Roles(0)
+  async findAllWithoutCars() {
+    const users = await this.userService.findAllWithoutCars()
+
+    if (!users) {
+      throw new NotFoundException({
+        ok: false,
+        message: 'Users not found',
+        statusCode: 404
+      })
+    } else return users
+  }
+
   @Get(':id')
   @HttpCode(200)
   @Roles(0)
@@ -58,6 +73,21 @@ export class UserController {
         statusCode: 404
       })
     } else return user
+  }
+
+  @Get('findByEmail/:email')
+  @HttpCode(200)
+  @Roles(0)
+  async findCarsByEmail(@Param('email') email: string) {
+    const cars = await this.userService.findCarsByEmail(email)
+
+    if (!cars) {
+      throw new NotFoundException({
+        ok: false,
+        message: 'Cars not found',
+        statusCode: 404
+      })
+    } else return cars
   }
 
   @Patch(':id')

@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common'
 import { UserModule } from './users/user.module'
+import { CarModule } from './cars/car.module'
 import { UserController } from './users/user.controller'
+import { CarController } from './cars/car.controller'
 import { AuthModule } from './auth/auth.module'
 import { SessionsModule } from './sessions/sessions.module'
 import { AuthController } from './auth/auth.controller'
@@ -16,9 +18,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
     AuthModule,
     DatabaseModule,
     UserModule,
+    CarModule,
     SessionsModule
   ],
-  controllers: [UserController, AuthController],
+  controllers: [UserController, CarController, AuthController],
   providers: [
     {
       provide: 'SESSION_CONFIG',
