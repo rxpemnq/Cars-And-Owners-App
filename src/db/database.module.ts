@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { Sessions } from '.././sessions/entities/session.entity'
 import { User } from '.././users/entities/user.entity'
 
 @Module({
@@ -11,7 +12,7 @@ import { User } from '.././users/entities/user.entity'
       username: 'root',
       password: 'root',
       database: 'db',
-      entities: [User],
+      entities: [User, Sessions],
       synchronize: true,
       dropSchema: process.env.NODE_ENV == 'development' ? true : false
     })
