@@ -1,6 +1,6 @@
 # Cars And Owners App
 
-Applications with the ability to register a user to view and manage their data and vehicles
+Application with the ability to register a user to view and manage their data and vehicles
 
 ## 🚀 Features
 
